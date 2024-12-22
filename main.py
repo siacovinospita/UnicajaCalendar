@@ -29,8 +29,9 @@ with open(ics_file_path, 'r') as f:
     old_calendar_str = remove_dtstamp(old_calendar_str)
     try:
         old_calendar = Calendar(old_calendar_str)
-    except ics.grammar.parse.ParseError as err:
+    except:
         print("Error Parsing old_calendar.ics")
+        input()
 
 if old_calendar_str == recent_calendar_str:
     print("Same Calendar")
