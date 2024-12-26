@@ -2,6 +2,7 @@ import ics
 from ics import Calendar
 import calendarRequest
 import difflib
+import saveTime
 
 # Convert the calendars to strings without DTSTAMP
 def remove_dtstamp(calendar):
@@ -15,6 +16,8 @@ def diff_two_string(string_1, string_2):
 
     # Print differences
     print("\n".join(diff))
+
+saveTime.save_time("startTime.txt")
 
 recent_calendar_str = calendarRequest.most_recent_calendar()
 recent_calendar_str = recent_calendar_str.replace("\r\n", "\n")
@@ -44,6 +47,8 @@ with open(ics_file_path, "w") as f:
     # print(recent_calendar_str)
     f.write(recent_calendar_str)
     print("Saved Calendar")
+
+saveTime.save_time("endTime.txt")
 
 # # Iterate through events and print details
 # for event in calendar.events:
