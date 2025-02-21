@@ -34,6 +34,10 @@ def get_recent_calendar():
 
     return recent_calendar_str
 
+def get_github_calendar():
+    return calendarRequest.github_calendar()
+
+
 
 def get_old_calendar(ics_file_path):
     with open(ics_file_path, 'r') as f:
