@@ -1,9 +1,16 @@
 from ics import Calendar
+import calendarRequest
 
 # Convert the calendars to strings without DTSTAMP
 def remove_dtstamp(calendar_str):
+    return remove_lines_starting_with(calendar_str, "DTSTAMP:")
+
+def remove_sequence(calendar_str):
+    return remove_lines_starting_with(calendar_str, "SEQUENCE:")
+
+def remove_lines_starting_with(calendar_str, start_of_line):
     return "\n".join(
-        line for line in str(calendar_str).splitlines() if not line.startswith("DTSTAMP:")
+        line for line in str(calendar_str).splitlines() if not line.startswith(start_of_line)
     )
 
 def change_line_ending(calendar_str):
@@ -16,12 +23,24 @@ def checkValidCalendar(calendar_str, errorMessage = "Error Pasing Calendar - Ori
         print(errorMessage)
         input()
 
+def get_recent_calendar():
+    recent_calendar_str = calendarRequest.most_recent_calendar()
+
+    recent_calendar_str = change_line_ending(recent_calendar_str)
+    recent_calendar_str = remove_dtstamp(recent_calendar_str)
+    recent_calendar_str = remove_sequence(recent_calendar_str)
+
+    checkValidCalendar(recent_calendar_str, "Error Parsing Calendar from request")
+
+    return recent_calendar_str
+
 
 def get_old_calendar(ics_file_path):
     with open(ics_file_path, 'r') as f:
         old_calendar_str = f.read()
 
     old_calendar_str = remove_dtstamp(old_calendar_str)
+    old_calendar_str = remove_sequence(old_calendar_str)
     checkValidCalendar(old_calendar_str, "Error Parsing Calendar from file")
 
     return old_calendar_str

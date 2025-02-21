@@ -1,15 +1,9 @@
 from icsCalendarManipulation import *
-import calendarRequest
 from saveTime import save_time
 
 save_time("startTime.txt")
 
-recent_calendar_str = calendarRequest.most_recent_calendar()
-
-recent_calendar_str = change_line_ending(recent_calendar_str)
-recent_calendar_str = remove_dtstamp(recent_calendar_str)
-
-checkValidCalendar(recent_calendar_str, "Error Parsing Calendar from request")
+recent_calendar_str = get_recent_calendar()
 
 # Load the ICS file
 ics_file_path = "old_calendar.ics"
