@@ -25,7 +25,7 @@ else:
 
     github_calendar_str = get_github_calendar()
 
-    stringDifferenceFinder.diff_two_string(github_calendar_str, recent_calendar_str)
+    # stringDifferenceFinder.diff_two_string(github_calendar_str, recent_calendar_str)
 
     print(recent_calendar_str == github_calendar_str)
 
