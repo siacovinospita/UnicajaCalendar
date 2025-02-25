@@ -1,4 +1,5 @@
 import stringDifferenceFinder
+from calendarRequest import github_push_calendar
 from icsCalendarManipulation import *
 from saveTime import save_time
 
@@ -23,11 +24,13 @@ else:
 
     save_calendar(ics_file_path, recent_calendar_str)
 
-    github_calendar_str = get_github_calendar()
+    # github_calendar_str = get_github_calendar()
+
+    github_push_calendar()
 
     # stringDifferenceFinder.diff_two_string(github_calendar_str, recent_calendar_str)
 
-    print(recent_calendar_str == github_calendar_str)
+    # print(recent_calendar_str == github_calendar_str)
 
     print("Saved Calendar")
 

@@ -63,17 +63,5 @@ def save_calendar(ics_file_path, calendar_str):
 #     print(f"Description: {event.description}")
 #     print("-" * 40)
 
-import subprocess
 
-def git_push(commit_message):
-    try:
-        subprocess.run(["git", "add", "."], check=True)
-        subprocess.run(["git", "commit", "-m", commit_message], check=True)
-        subprocess.run(["git", "push"], check=True)
-        print("Changes pushed successfully!")
-    except subprocess.CalledProcessError as e:
-        print(f"Error: {e}")
-
-# Example usage
-git_push("Updated ICS file")
 
