@@ -64,4 +64,13 @@ def save_calendar(ics_file_path, calendar_str):
 #     print("-" * 40)
 
 
+def append_to_description(ics_content, additional_text):
+    calendar = Calendar(ics_content)
+    for event in calendar.events:
+        if event.description:
+            event.description += f" {additional_text}"
+        else:
+            raise RuntimeError
+    return str(calendar)
+
 

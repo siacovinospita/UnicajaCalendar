@@ -3,9 +3,11 @@ from calendarRequest import github_push_calendar, github_get_calendar
 from icsCalendarManipulation import *
 from saveTime import save_time
 
-save_time("startTime.txt")
+current_time = save_time("startTime.txt")
 
 recent_calendar_str = get_recent_calendar()
+
+recent_calendar_str = append_to_description(recent_calendar_str, "Last updated: " + current_time)
 
 # Load the ICS file
 ics_file_path = "old_calendar.ics"
