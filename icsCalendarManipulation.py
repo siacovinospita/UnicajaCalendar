@@ -71,6 +71,6 @@ def append_to_description(ics_content, additional_text):
             event.description += f" {additional_text}"
         else:
             raise RuntimeError
-    return str(calendar)
+    return calendar.serialize()
 
 
