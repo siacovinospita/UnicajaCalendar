@@ -5,9 +5,10 @@ from saveTime import save_time
 
 current_time = save_time("startTime.txt")
 
-recent_calendar_str = get_recent_calendar()
+recent_calendar_str = calendarRequest.most_recent_calendar()
 
 recent_calendar_str = append_to_description(recent_calendar_str, "\n Last updated: " + current_time)
+recent_calendar_str = format_recent_calendar(recent_calendar_str)
 
 # Load the ICS file
 ics_file_path = "old_calendar.ics"

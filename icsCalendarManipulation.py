@@ -23,8 +23,7 @@ def checkValidCalendar(calendar_str, errorMessage = "Error Pasing Calendar - Ori
         print(errorMessage)
         input()
 
-def get_recent_calendar():
-    recent_calendar_str = calendarRequest.most_recent_calendar()
+def format_recent_calendar(recent_calendar_str):
 
     recent_calendar_str = change_line_ending(recent_calendar_str)
     recent_calendar_str = remove_dtstamp(recent_calendar_str)
