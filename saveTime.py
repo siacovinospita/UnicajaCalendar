@@ -9,4 +9,4 @@ def save_time(file_name):
         file.write(f"Current time: {current_time}\n")
 
     # return current_time.strftime("%Y-%m-%d %H:%M:%S")
-    return current_time.strftime("%Y-%m-%d %H")
+    return current_time.strftime("%Y-%m-%d Hour %H")
