@@ -15,8 +15,8 @@ ics_file_path = "old_calendar.ics"
 old_calendar_str = get_old_calendar(ics_file_path)
 
 
-
-if old_calendar_str == recent_calendar_str:
+if False:
+# if old_calendar_str == recent_calendar_str:
     print("Same Calendar")
 
 else:
@@ -24,11 +24,14 @@ else:
           "Updating the Calendar")
 
 
-    save_calendar(ics_file_path, recent_calendar_str)
+    save_calendar_to_file(ics_file_path, recent_calendar_str)
 
     github_push_calendar()
 
     github_calendar_str = github_get_calendar()
+
+    print(stringDifferenceFinder.diff_two_string(recent_calendar_str, github_calendar_str))
+    input("String")
 
     if github_calendar_str != recent_calendar_str:
         input("Saving Calendar to github failed\n"

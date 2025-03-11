@@ -48,7 +48,7 @@ def get_old_calendar(ics_file_path):
 
     return old_calendar_str
 
-def save_calendar(ics_file_path, calendar_str):
+def save_calendar_to_file(ics_file_path, calendar_str):
     # Save the calendar to a file
     with open(ics_file_path, "w") as f:
         f.write(calendar_str)
