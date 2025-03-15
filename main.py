@@ -31,6 +31,9 @@ else:
     if github_calendar_str != recent_calendar_str:
         input("Saving Calendar to github failed\n"
               "Press enter to continue")
+        github_calendar_str = github_get_calendar()
+        if github_calendar_str != recent_calendar_str:
+            print("Calendar still different")
 
     else:
         print("Saved Calendar")
