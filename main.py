@@ -2,6 +2,8 @@ import stringDifferenceFinder
 from calendarRequest import github_push_calendar, github_get_calendar
 from icsCalendarManipulation import *
 from saveTime import save_time
+from time import sleep
+
 
 current_time = save_time("startTime.txt")
 
@@ -26,9 +28,16 @@ else:
 
     github_push_calendar()
 
-    github_calendar_str = github_get_calendar()
+    correctlySavedToGitHub = False
+    for i in range(0 , 10):
+        correctlySavedToGitHub = (github_get_calendar() == recent_calendar_str)
+        if correctlySavedToGitHub:
+            break
+        sleep(0.05)  #sleep for 50 ms
 
-    if github_calendar_str != recent_calendar_str:
+
+
+    if not correctlySavedToGitHub:
         input("Saving Calendar to github failed\n"
               "Press enter to continue")
         github_calendar_str = github_get_calendar()
