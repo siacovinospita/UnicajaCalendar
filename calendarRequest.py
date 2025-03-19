@@ -44,7 +44,7 @@ def github_push_calendar():
 
         subprocess.run(["git", "commit", "-m", commit_message], check=True)
         subprocess.run(["git", "push"], check=True)
-        print("Changes pushed successfully!")
+        print("Git commands finished successfully!")
 
 
     except subprocess.CalledProcessError as e:

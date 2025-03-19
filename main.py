@@ -29,20 +29,23 @@ else:
     github_push_calendar()
 
     correctlySavedToGitHub = False
-    for i in range(0 , 10):
+    for i in range(0, 1000):
         correctlySavedToGitHub = (github_get_calendar() == recent_calendar_str)
         if correctlySavedToGitHub:
+            print("Successful get on attempt" + i)
             break
         sleep(0.05)  #sleep for 50 ms
 
 
 
     if not correctlySavedToGitHub:
-        input("Saving Calendar to github failed\n"
-              "Press enter to continue")
+        input("Could not confirm saving Calendar to github\n"
+              "Press enter to check again")
         github_calendar_str = github_get_calendar()
         if github_calendar_str != recent_calendar_str:
             print("Calendar still different")
+        else:
+            print("Saved Calendar")
 
     else:
         print("Saved Calendar")
